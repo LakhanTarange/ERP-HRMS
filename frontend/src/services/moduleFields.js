@@ -1,0 +1,131 @@
+export const MODULE_FIELDS = {
+  employees: [
+    { key: "employeeCode", label: "Employee Code", type: "text" },
+    { key: "firstName", label: "First Name", type: "text" },
+    { key: "lastName", label: "Last Name", type: "text" },
+    { key: "email", label: "Email", type: "text" },
+    { key: "phone", label: "Phone", type: "text" },
+    { key: "dateOfBirth", label: "Date of Birth", type: "date" },
+    { key: "gender", label: "Gender", type: "select", options: ["Male", "Female", "Other"] },
+    { key: "dateOfJoining", label: "Date of Joining", type: "date" },
+    { key: "departmentId", label: "Department", type: "lookup", lookupModule: "departments" },
+    { key: "designationId", label: "Designation", type: "lookup", lookupModule: "designations" },
+    { key: "address", label: "Address", type: "textarea" },
+    { key: "status", label: "Status", type: "select", options: ["ACTIVE", "INACTIVE"] },
+  ],
+
+  departments: [
+    { key: "name", label: "Department Name", type: "text" },
+    { key: "code", label: "Code", type: "text" },
+    { key: "description", label: "Description", type: "textarea" },
+    { key: "active", label: "Active", type: "boolean" },
+  ],
+
+  designations: [
+    { key: "name", label: "Designation Name", type: "text" },
+    { key: "code", label: "Code", type: "text" },
+    { key: "description", label: "Description", type: "textarea" },
+    { key: "level", label: "Level", type: "text" },
+    { key: "active", label: "Active", type: "boolean" },
+  ],
+
+  attendance: [
+    { key: "employeeId", label: "Employee ID", type: "number" },
+    { key: "attendanceDate", label: "Date", type: "date" },
+    { key: "checkIn", label: "Check In", type: "time" },
+    { key: "checkOut", label: "Check Out", type: "time" },
+    { key: "status", label: "Status", type: "select", options: ["PRESENT", "ABSENT", "HALF_DAY", "LEAVE"] },
+    { key: "workingHours", label: "Working Hours", type: "number" },
+    { key: "remarks", label: "Remarks", type: "textarea" },
+  ],
+
+  leaves: [
+    { key: "employeeId", label: "Employee ID", type: "number" },
+    { key: "leaveType", label: "Leave Type", type: "select", options: ["CASUAL", "SICK", "EARNED", "UNPAID"] },
+    { key: "startDate", label: "Start Date", type: "date" },
+    { key: "endDate", label: "End Date", type: "date" },
+    { key: "numberOfDays", label: "Number of Days", type: "number" },
+    { key: "reason", label: "Reason", type: "textarea" },
+    { key: "status", label: "Status", type: "select", options: ["PENDING", "APPROVED", "REJECTED"] },
+  ],
+
+  payroll: [
+    { key: "employeeId", label: "Employee ID", type: "number" },
+    { key: "month", label: "Month (e.g. 2026-08)", type: "text" },
+    { key: "basicSalary", label: "Basic Salary", type: "number" },
+    { key: "allowances", label: "Allowances", type: "number" },
+    { key: "deductions", label: "Deductions", type: "number" },
+    { key: "grossSalary", label: "Gross Salary", type: "number" },
+    { key: "netSalary", label: "Net Salary", type: "number" },
+    { key: "paymentDate", label: "Payment Date", type: "date" },
+    { key: "paymentStatus", label: "Payment Status", type: "select", options: ["PENDING", "PAID"] },
+    { key: "remarks", label: "Remarks", type: "textarea" },
+  ],
+
+  expenses: [
+    { key: "employeeId", label: "Employee ID", type: "number" },
+    { key: "expenseType", label: "Expense Type", type: "text" },
+    { key: "amount", label: "Amount", type: "number" },
+    { key: "expenseDate", label: "Expense Date", type: "date" },
+    { key: "description", label: "Description", type: "textarea" },
+    { key: "receiptPath", label: "Receipt Path", type: "text" },
+    { key: "remarks", label: "Remarks", type: "textarea" },
+  ],
+
+  candidates: [
+    { key: "name", label: "Name", type: "text" },
+    { key: "email", label: "Email", type: "text" },
+    { key: "phone", label: "Phone", type: "text" },
+    { key: "jobPositionId", label: "Job Position ID", type: "number" },
+    { key: "applicationDate", label: "Application Date", type: "date" },
+    { key: "status", label: "Status", type: "select", options: ["NEW", "SHORTLISTED", "REJECTED", "HIRED"] },
+    { key: "interviewDate", label: "Interview Date", type: "date" },
+    { key: "remarks", label: "Remarks", type: "textarea" },
+    { key: "resumePath", label: "Resume Path", type: "text" },
+  ],
+
+  interviews: [
+    { key: "candidateId", label: "Candidate ID", type: "number" },
+    { key: "interviewer", label: "Interviewer", type: "text" },
+    { key: "interviewDate", label: "Interview Date", type: "date" },
+    { key: "interviewTime", label: "Interview Time", type: "time" },
+    { key: "interviewType", label: "Interview Type", type: "text" },
+    { key: "status", label: "Status", type: "select", options: ["SCHEDULED", "COMPLETED", "CANCELLED"] },
+    { key: "result", label: "Result", type: "text" },
+    { key: "feedback", label: "Feedback", type: "textarea" },
+  ],
+
+  "job-positions": [
+    { key: "title", label: "Title", type: "text" },
+    { key: "department", label: "Department", type: "text" },
+    { key: "numberOfPositions", label: "Number of Positions", type: "number" },
+    { key: "description", label: "Description", type: "textarea" },
+    { key: "status", label: "Status", type: "select", options: ["OPEN", "CLOSED"] },
+  ],
+
+  "performance-reviews": [
+    { key: "employeeId", label: "Employee ID", type: "number" },
+    { key: "reviewPeriod", label: "Review Period", type: "text" },
+    { key: "reviewDate", label: "Review Date", type: "date" },
+    { key: "reviewer", label: "Reviewer", type: "text" },
+    { key: "rating", label: "Rating (0-5)", type: "number" },
+    { key: "goals", label: "Goals", type: "textarea" },
+    { key: "achievements", label: "Achievements", type: "textarea" },
+    { key: "strengths", label: "Strengths", type: "textarea" },
+    { key: "areasForImprovement", label: "Areas for Improvement", type: "textarea" },
+    { key: "comments", label: "Comments", type: "textarea" },
+    { key: "status", label: "Status", type: "select", options: ["DRAFT", "COMPLETED"] },
+  ],
+
+  "employee-documents": [
+    { key: "employeeId", label: "Employee ID", type: "number" },
+    { key: "documentType", label: "Document Type", type: "text" },
+    { key: "documentName", label: "Document Name", type: "text" },
+    { key: "documentNumber", label: "Document Number", type: "text" },
+    { key: "filePath", label: "File Path", type: "text" },
+    { key: "uploadedDate", label: "Uploaded Date", type: "date" },
+    { key: "expiryDate", label: "Expiry Date", type: "date" },
+    { key: "status", label: "Status", type: "select", options: ["ACTIVE", "EXPIRED"] },
+    { key: "remarks", label: "Remarks", type: "textarea" },
+  ],
+};

@@ -1,5 +1,4 @@
-const API_URL = "/api/auth";
-
+const BASE_URL = "https://erp-hrms.up.railway.app/api/auth";
 export const registerUser = async (userData) => {
   const response = await fetch(`${API_URL}/register`, {
     method: "POST",

@@ -1,4 +1,4 @@
-const BASE_URL = "/api";
+const BASE_URL = "https://erp-hrms.up.railway.app/api";
 function getHeaders() {
   const token = localStorage.getItem("token");
   return {

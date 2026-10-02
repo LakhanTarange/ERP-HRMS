@@ -50,7 +50,10 @@ public class DepartmentController {
             @RequestBody Department department) {
 
         return ResponseEntity.ok(
-                departmentService.updateDepartment(id, department)
+                departmentService.updateDepartment(
+                        id,
+                        department
+                )
         );
     }
 
@@ -60,6 +63,8 @@ public class DepartmentController {
 
         departmentService.deleteDepartment(id);
 
-        return ResponseEntity.ok("Department deleted successfully");
+        return ResponseEntity.ok(
+                "Department deleted successfully"
+        );
     }
 }

@@ -58,8 +58,27 @@ const EMPLOYEE_MENU = [
 function Sidebar() {
   const navigate = useNavigate();
   const location = useLocation();
+
   const role = localStorage.getItem("role") || "";
-  const isAdmin = ["SUPER_ADMIN", "HR_ADMIN", "MANAGER", "ACCOUNTANT"].includes(role);
+
+  const isAdmin = [
+    "SUPER_ADMIN",
+    "HR_ADMIN",
+    "MANAGER",
+    "ACCOUNTANT",
+  ].includes(role);
+
+  const isManager =
+    role === "MANAGER" ||
+    role === "ROLE_MANAGER";
+
+  const isHR =
+    role === "HR_ADMIN" ||
+    role === "ROLE_HR_ADMIN" ||
+    role === "HR" ||
+    role === "ROLE_HR";
+
+  const canApproveLeaves = isManager || isHR;
 
   const logout = () => {
     localStorage.clear();
@@ -72,10 +91,13 @@ function Sidebar() {
         <div className="sidebar-title">ERP-HRMS</div>
 
         <div
-          className={`sidebar-item ${location.pathname === "/dashboard" ? "active" : ""}`}
+          className={`sidebar-item ${
+            location.pathname === "/dashboard" ? "active" : ""
+          }`}
           onClick={() => navigate("/dashboard")}
         >
-          <span className="sidebar-icon">🏠</span> Dashboard
+          <span className="sidebar-icon">🏠</span>
+          Dashboard
         </div>
 
         <div className="sidebar-divider" />
@@ -88,15 +110,36 @@ function Sidebar() {
             }`}
             onClick={() => navigate(`/modules${mod.path}`)}
           >
-            <span className="sidebar-icon">{ADMIN_ICONS[mod.key] || "📦"}</span>
+            <span className="sidebar-icon">
+              {ADMIN_ICONS[mod.key] || "📦"}
+            </span>
+
             {mod.label}
           </div>
         ))}
 
+        {/* Leave Approval Menu */}
+        {canApproveLeaves && (
+          <>
+            <div className="sidebar-divider" />
+
+            <div
+              className={`sidebar-item ${
+                location.pathname === "/leave-approvals" ? "active" : ""
+              }`}
+              onClick={() => navigate("/leave-approvals")}
+            >
+              <span className="sidebar-icon">✅</span>
+              Leave Approvals
+            </div>
+          </>
+        )}
+
         <div className="sidebar-divider" />
 
         <div className="sidebar-item logout-item" onClick={logout}>
-          <span className="sidebar-icon">🚪</span> Logout
+          <span className="sidebar-icon">🚪</span>
+          Logout
         </div>
       </div>
     );
@@ -107,10 +150,13 @@ function Sidebar() {
       <div className="sidebar-title">ERP-HRMS</div>
 
       <div
-        className={`sidebar-item ${location.pathname === "/dashboard" ? "active" : ""}`}
+        className={`sidebar-item ${
+          location.pathname === "/dashboard" ? "active" : ""
+        }`}
         onClick={() => navigate("/dashboard")}
       >
-        <span className="sidebar-icon">🏠</span> Dashboard
+        <span className="sidebar-icon">🏠</span>
+        Dashboard
       </div>
 
       <div className="sidebar-divider" />
@@ -118,8 +164,10 @@ function Sidebar() {
       {EMPLOYEE_MENU.map((section) => (
         <div key={section.group}>
           <div className="sidebar-group-label">
-            <span className="sidebar-icon">{section.icon}</span> {section.group}
+            <span className="sidebar-icon">{section.icon}</span>
+            {section.group}
           </div>
+
           {section.items.map((item) => (
             <div
               key={item.path}
@@ -137,7 +185,8 @@ function Sidebar() {
       <div className="sidebar-divider" />
 
       <div className="sidebar-item logout-item" onClick={logout}>
-        <span className="sidebar-icon">🚪</span> Logout
+        <span className="sidebar-icon">🚪</span>
+        Logout
       </div>
     </div>
   );

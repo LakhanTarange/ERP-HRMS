@@ -182,3 +182,27 @@
     border-right-color: var(--border);
   }
 }
+.search-input {
+  min-width: 260px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #ffffff;
+  color: #111827;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.employee-link {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.employee-link:hover {
+  text-decoration: underline;
+}

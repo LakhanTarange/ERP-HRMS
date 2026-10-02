@@ -1,7 +1,9 @@
 package com.erp.hrms.entity;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "leaves")
@@ -27,9 +29,35 @@ public class Leave {
 
     private String reason;
 
-    private String status = "PENDING";
+    /*
+     * Workflow statuses:
+     *
+     * PENDING_MANAGER
+     * MANAGER_APPROVED
+     * PENDING_HR
+     * APPROVED
+     * MANAGER_REJECTED
+     * HR_REJECTED
+     */
+    @Column(nullable = false)
+    private String status = "PENDING_HR";
 
     private String approvedBy;
+
+    private String managerApprovedBy;
+
+    private LocalDateTime managerApprovedAt;
+
+    private String hrApprovedBy;
+
+    private LocalDateTime hrApprovedAt;
+
+    private String rejectedBy;
+
+    private LocalDateTime rejectedAt;
+
+    @Column(length = 1000)
+    private String rejectionReason;
 
     public Leave() {
     }
@@ -104,5 +132,61 @@ public class Leave {
 
     public void setApprovedBy(String approvedBy) {
         this.approvedBy = approvedBy;
+    }
+
+    public String getManagerApprovedBy() {
+        return managerApprovedBy;
+    }
+
+    public void setManagerApprovedBy(String managerApprovedBy) {
+        this.managerApprovedBy = managerApprovedBy;
+    }
+
+    public LocalDateTime getManagerApprovedAt() {
+        return managerApprovedAt;
+    }
+
+    public void setManagerApprovedAt(LocalDateTime managerApprovedAt) {
+        this.managerApprovedAt = managerApprovedAt;
+    }
+
+    public String getHrApprovedBy() {
+        return hrApprovedBy;
+    }
+
+    public void setHrApprovedBy(String hrApprovedBy) {
+        this.hrApprovedBy = hrApprovedBy;
+    }
+
+    public LocalDateTime getHrApprovedAt() {
+        return hrApprovedAt;
+    }
+
+    public void setHrApprovedAt(LocalDateTime hrApprovedAt) {
+        this.hrApprovedAt = hrApprovedAt;
+    }
+
+    public String getRejectedBy() {
+        return rejectedBy;
+    }
+
+    public void setRejectedBy(String rejectedBy) {
+        this.rejectedBy = rejectedBy;
+    }
+
+    public LocalDateTime getRejectedAt() {
+        return rejectedAt;
+    }
+
+    public void setRejectedAt(LocalDateTime rejectedAt) {
+        this.rejectedAt = rejectedAt;
+    }
+
+    public String getRejectionReason() {
+        return rejectionReason;
+    }
+
+    public void setRejectionReason(String rejectionReason) {
+        this.rejectionReason = rejectionReason;
     }
 }

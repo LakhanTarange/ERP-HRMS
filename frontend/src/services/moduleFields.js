@@ -30,14 +30,58 @@ export const MODULE_FIELDS = {
   ],
 
   attendance: [
-    { key: "employeeId", label: "Employee ID", type: "number" },
-    { key: "attendanceDate", label: "Date", type: "date" },
-    { key: "checkIn", label: "Check In", type: "time" },
-    { key: "checkOut", label: "Check Out", type: "time" },
-    { key: "status", label: "Status", type: "select", options: ["PRESENT", "ABSENT", "HALF_DAY", "LEAVE"] },
-    { key: "workingHours", label: "Working Hours", type: "number" },
-    { key: "remarks", label: "Remarks", type: "textarea" },
-  ],
+  {
+    key: "employeeId",
+    label: "Employee",
+    type: "lookup",
+    lookupModule: "employees",
+  },
+  {
+    key: "attendanceDate",
+    label: "Attendance Date",
+    type: "date",
+  },
+  {
+    key: "checkIn",
+    label: "Punch In",
+    type: "time",
+  },
+  {
+    key: "checkOut",
+    label: "Punch Out",
+    type: "time",
+  },
+  {
+    key: "shiftSource",
+    label: "Shift Type",
+    type: "select",
+    options: [
+      "AUTO",
+      "MANUAL",
+    ],
+  },
+  {
+    key: "shiftCode",
+    label: "Manual Shift",
+    type: "select",
+    options: [
+      "P1",
+      "P2",
+      "P3",
+      "G",
+      "P3-12D",
+      "P4",
+      "P1-P2",
+      "P2-P3",
+      "P3-P1",
+    ],
+  },
+  {
+    key: "remarks",
+    label: "Remarks",
+    type: "textarea",
+  },
+],
 
   leaves: [
     { key: "employeeId", label: "Employee ID", type: "number" },

@@ -14,7 +14,9 @@ public class DesignationController {
 
     private final DesignationService designationService;
 
-    public DesignationController(DesignationService designationService) {
+    public DesignationController(
+            DesignationService designationService) {
+
         this.designationService = designationService;
     }
 
@@ -23,12 +25,15 @@ public class DesignationController {
             @RequestBody Designation designation) {
 
         return ResponseEntity.ok(
-                designationService.createDesignation(designation)
+                designationService.createDesignation(
+                        designation
+                )
         );
     }
 
     @GetMapping
-    public ResponseEntity<List<Designation>> getAllDesignations() {
+    public ResponseEntity<List<Designation>>
+    getAllDesignations() {
 
         return ResponseEntity.ok(
                 designationService.getAllDesignations()
@@ -36,7 +41,8 @@ public class DesignationController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Designation> getDesignationById(
+    public ResponseEntity<Designation>
+    getDesignationById(
             @PathVariable Long id) {
 
         return ResponseEntity.ok(
@@ -45,21 +51,28 @@ public class DesignationController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Designation> updateDesignation(
+    public ResponseEntity<Designation>
+    updateDesignation(
             @PathVariable Long id,
             @RequestBody Designation designation) {
 
         return ResponseEntity.ok(
-                designationService.updateDesignation(id, designation)
+                designationService.updateDesignation(
+                        id,
+                        designation
+                )
         );
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteDesignation(
+    public ResponseEntity<String>
+    deleteDesignation(
             @PathVariable Long id) {
 
         designationService.deleteDesignation(id);
 
-        return ResponseEntity.ok("Designation deleted successfully");
+        return ResponseEntity.ok(
+                "Designation deleted successfully"
+        );
     }
 }
